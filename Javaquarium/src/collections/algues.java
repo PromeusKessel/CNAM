@@ -5,6 +5,6 @@ public class algues {
 	public static int nbreInstances = 0;
 
 	public algues() {
-		nbreInstances++;
+		nbreInstances++; 
 	}
 }

@@ -1,38 +1,53 @@
 package collections;
 
-import java.util.Objects;
+import java.util.ArrayList;
 
-public class Poissons {
+public abstract class Poissons {
 	// Var
 	protected String name;
-	protected String type;
+	protected String sexe;
+	protected String race;
+	protected ArrayList<Object> fishList;
 	
 	// Gestion du nbr d'instances
-	public static int nbreInstances = 0;
+	protected static int nbreInstances = 0; 
 	
 	// Constructeur
 	public Poissons()
 	{
-		name = "Bobby";
-		type = "Male";
+		name = " ";
+		sexe = " ";
+		race = " ";
 		nbreInstances++;
+		
 	}
 	
-	// Constructeur surchargé
-	public Poissons(String pName, String pType)
+	// Constructeur surchargé1
+	public Poissons(String pName, String pSexe, String pRace)
 	{
 		this.name = pName;
-		this.type = pType;
+		this.sexe = pSexe;
+		this.race = pRace;
 		nbreInstances++;
+		addToList();
 	}
 	
 	// Accesseurs
-	
 	public String getName() {
 		return name;
 	}
 	
+	public void addToList() {
+		fishList.add(this);
+	}
+	
+	public ArrayList<Object> getList() {
+		ArrayList<Object> test = new ArrayList<Object>();
+		test = fishList;
+		return test;
+	}
+	
 	public String getType() {
-		return type; 
+		return sexe; 
 	}
 }
