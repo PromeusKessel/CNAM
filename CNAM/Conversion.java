@@ -2,7 +2,113 @@
 public class Conversion {
 	public static void main(String[] args) {
 		
-		for (int i = 1; i < 11; i++) {
+		// Programme de date correcte
+		// Saisir une date au format jj / mm / aaaa
+		// Vérifier si la date est correcte
+		// Sinon : indiquer l'erreur
+		// Donner : 
+		//   Annee bissextile
+		//   Nb de jour du mois en cours
+		
+		int jj, mm, aaaa;
+		String month; 
+		boolean dateOK = true;
+		
+		// vérifier que aucun < 0
+		// vérifier mm 
+			// si 02 -> alors vérifier si bissex + vérifier si 0 < jj =< 29
+			// si 04 06 09 11 vérifier si 0 < jj =< 30
+			// si 01 03 05 07 08 10 12, vérifier si 0 < jj =< 31 
+		
+		Terminal.ecrireString("Vérification de la date");
+		Terminal.ecrireStringln("***********************");
+
+		Terminal.ecrireString("Indiquez un jour ; jj = ");
+		jj = Terminal.lireInt();
+		
+		Terminal.ecrireString("Indiquez un mois ; mm = ");
+		mm = Terminal.lireInt();
+
+		Terminal.ecrireString("Indiquez une année ; aaaa = ");
+		aaaa = Terminal.lireInt();
+		
+
+		
+		do {
+			if (jj<1||jj>31) { 
+				dateOK = false;
+				Terminal.ecrireString("Erreur sur les jours"); 
+			}
+			else if (mm<1 || mm>12) { 
+				dateOK = false;
+				Terminal.ecrireString("Erreur sur les mois"); 
+			}
+			else if (aaaa<0) { 
+				dateOK = false;
+				Terminal.ecrireString("Erreur sur l'année"); 
+			}
+			else { dateOK = true; }
+			
+			if (mm==2) {
+				if ((aaaa % 4 == 0) | !(aaaa % 100 == 0) | (aaaa % 400 == 0)) { Terminal.ecrireString("Année bissextile"); }
+				else { Terminal.ecrireString("Année non bissextile"); }
+			}
+			if (mm == 1 || mm == 3 || mm == 5 || mm == 7 || mm == 8 || mm == 10 || mm == 12) {
+				Terminal.ecrireString("Mois en 31 jours");
+			}
+			if (mm == 4 || mm == 6 || mm == 9 || mm == 11) {
+				Terminal.ecrireString("Mois en 30 jours");
+			}
+		}while (dateOK = true);
+		
+		
+		/**(mm == 02) { 
+			Terminal.ecrireString("Février");
+			if ( mm == 02 ) { // Vérifier si bissext
+				Terminal.ecrireString("Février");
+			}
+			else { } // Si pas bissext alors vérifier si jj < 28
+		}
+		else if (mm == 01 || mm == 03 || mm == 05 || mm == 07 || mm == 8 || mm == 10 || mm == 12) {
+			Terminal.ecrireString("Mois en 31 jours");
+		}
+		else { Terminal.ecrireString("Mois en 30 jours"); }
+		// Terminal.ecrireString("Date indiquée : "+jj+"/"+mm+"/"+aaaa);
+		
+		/**double dollar, somme, euros;
+		char exit = 'o';
+		
+		
+		// modifier ce programme pour pouvoir convertir plusieurs sommes + prvoir moyen de stopper l'execution
+		// do ... while (char isnot stop)
+		
+		Terminal.ecrireStringln("Système de conversion");
+		Terminal.ecrireStringln("*********************");
+		Terminal.ecrireString("\tCours du dollar :");
+		dollar = Terminal.lireDouble();
+		// Un dollar vaut 0.89 € 
+		
+		do {
+			Terminal.ecrireString("\tSomme à convertir en euros :");
+			somme = Terminal.lireDouble();
+			
+			if (dollar<1) {euros = somme * dollar;}
+			else {euros = somme / dollar;}
+			
+			Terminal.ecrireStringln("$"+somme+" vaut "+euros+"€.");
+			
+			Terminal.ecrireString("Souhaitez vous faire une autre conversion ? (O/N)");
+			exit = Terminal.lireChar(); 
+			
+			while (exit != 'N' && exit != 'O') {
+				System.out.println("Merci d'indiquer O ou N");
+				Terminal.ecrireString("Souhaitez vous faire une autre conversion ? (O/N)");
+				exit = Terminal.lireChar(); 
+			} 
+
+		}while (exit == 'O');
+		
+		/**for (int i = 1; i < 11; i++) {
 			Terminal.ecrireStringln("Pour x = "+i+", x² = "+i*i);
 		}
 		
@@ -11,11 +117,12 @@ public class Conversion {
 		x = Terminal.lireInt();
 		Terminal.ecrireString("Quelle valeur de y ? :");
 		y = Terminal.lireInt();
-		int x1 = x;
+		int x1 = 1;
 		for (int i=0; i < y ;i++) {
-			x = 1 * x1 * x;
-			Terminal.ecrireStringln(" " + x1 + "^"+ i + " = " + x);
+			x1 = x1 * x;
+			Terminal.ecrireStringln(" " + x + "^"+ i + " = " + x1);
 		}
+		
 		/** double euros, francs;
 		Terminal.ecrireString("Somme en euros ? :");
 		euros = Terminal.lireDouble();
